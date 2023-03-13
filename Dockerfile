@@ -5,15 +5,20 @@ LABEL maintainer="Nianjun Sun <sunnianjun@apache.org>"
 
 ENV HUGO_VERSION=0.70.0
 
-ADD ./bin/hugo_0.70.0_Linux-64bit/hugo /usr/local/bin/hugo
+COPY ./bin/hugo_0.70.0_Linux-64bit/hugo /usr/local/bin/hugo
+COPY ./build.sh /opt/
+RUN chmod 0755 /opt/build.sh
 
-RUN apk add --update \
+RUN apk update \
     && apk upgrade \
-    && apk add --no-cache ca-certificates
+    && apk add --no-cache bash \
+    && echo "export PATH=$PATH:/bin/bash" > ~/.bashrc \
+    && source ~/.bashrc
 
-VOLUME /input
-VOLUME /output
+VOLUME /opt/input
+VOLUME /opt/output
 
-WORKDIR /src
+WORKDIR /opt/input
+CMD ["/opt/build.sh"]
 
 EXPOSE 1313
