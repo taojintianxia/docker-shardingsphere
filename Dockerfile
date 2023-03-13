@@ -6,8 +6,9 @@ LABEL maintainer="Nianjun Sun <sunnianjun@apache.org>"
 ENV HUGO_VERSION=0.70.0
 
 COPY ./bin/hugo_0.70.0_Linux-64bit/hugo /usr/local/bin/hugo
-COPY ./build.sh /opt/
-RUN chmod 0755 /opt/build.sh
+COPY ./build.sh /
+RUN chmod 777 /build.sh \
+    && chmod 777 /usr/local/bin/hugo && ln -s /usr/local/bin/hugo /
 
 RUN apk update \
     && apk upgrade \
@@ -16,9 +17,7 @@ RUN apk update \
     && source ~/.bashrc
 
 VOLUME /opt/input
-VOLUME /opt/output
-
 WORKDIR /opt/input
-CMD ["/opt/build.sh"]
+ENTRYPOINT ["sh", "/build.sh"]
 
 EXPOSE 1313
