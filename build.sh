@@ -3,7 +3,7 @@
 ARGS=$@
 
 if [ -z "${ARGS}" ]; then
-    echo "args is null, use default args '--cleanDestinationDir'"
+    echo "ARGS is empty, use default ARGS '--cleanDestinationDir'"
     ARGS="--cleanDestinationDir"
 fi
 
