@@ -6,7 +6,7 @@ LABEL maintainer="Nianjun Sun <sunnianjun@apache.org>"
 ENV HUGO_VERSION=0.70.0
 
 COPY bin/hugo_0.70.0_Linux-64bit/hugo /usr/local/bin/hugo
-COPY hugo.sh /
+COPY bin/hugo.sh /
 RUN chmod 777 /hugo.sh \
     && chmod 777 /usr/local/bin/hugo && ln -s /usr/local/bin/hugo /
 
