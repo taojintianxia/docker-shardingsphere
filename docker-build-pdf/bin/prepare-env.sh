@@ -1,12 +1,12 @@
-function prepare {
+prepare() {
     git config --global user.name "shardingsphere"
     git config --global user.email "dev@shardingsphere.apache.org"
-    python -m pip install --upgrade pip
+    python3 -m pip install --upgrade pip
     pip install sphinx
     sudo apt-get update -y
     sudo apt-get install -y latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
-    sudo apt-get install texlive-xetex latex-cjk-all
-    #wget -q https://github.com/jgm/pandoc/releases/download/2.16.1/pandoc-2.16.1-1-amd64.deb
+    sudo apt-get install -y texlive-xetex latex-cjk-all
+    wget -q https://github.com/jgm/pandoc/releases/download/2.16.1/pandoc-2.16.1-1-amd64.deb
     sudo dpkg -i pandoc-2.16.1-1-amd64.deb
     #wget https://github.com/adobe-fonts/source-han-sans/raw/release/OTF/SourceHanSansSC.zip
     wget https://github.com/adobe-fonts/source-han-sans/releases/latest/download/SourceHanSansSC.zip
