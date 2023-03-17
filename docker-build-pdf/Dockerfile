@@ -14,4 +14,4 @@ RUN apt-get update -y \
     && echo "alias python=python3" > ~/.bashrc \
     && source ~/.bashrc
 
-RUN ["/prepare-env.sh"]
+#RUN ["/prepare-env.sh"]
